@@ -48,12 +48,26 @@ void testPrintEndsInDataModeWithExpectedNibble(TestInvocation* t) {
   t->verify((PORTG & _BV(PG2)) != 0, F("d7 should be HIGH"));
 }
 
+void testPrintFlashStrEndsInDataModeWithExpectedNibble(TestInvocation* t) {
+  t->setName(F("print(F(\"K\")) ends with RS high and data lines at 'K''s low nibble"));
+  lcd.begin(16, 2);
+  lcd.print(F("K"));
+  // 'K' = 0x4B; its low nibble (1011) is the last nibble sent -
+  // d4=1, d5=1, d6=0, d7=1.
+  t->verify((PORTC & _BV(PC7)) != 0, F("RS should be HIGH (data mode)"));
+  t->verify((PORTC & _BV(PC4)) != 0, F("d4 should be HIGH"));
+  t->verify((PORTC & _BV(PC2)) != 0, F("d5 should be HIGH"));
+  t->verify((PORTC & _BV(PC0)) == 0, F("d6 should be LOW"));
+  t->verify((PORTG & _BV(PG2)) != 0, F("d7 should be HIGH"));
+}
+
 void setup() {
   Serial.begin(9600);
   TestFunction tests[] = {
     testBeginConfiguresPinsAsOutputs,
     testClearEndsInCommandModeWithExpectedNibble,
-    testPrintEndsInDataModeWithExpectedNibble
+    testPrintEndsInDataModeWithExpectedNibble,
+    testPrintFlashStrEndsInDataModeWithExpectedNibble
   };
   runTestSuiteShowMem(tests);
 }

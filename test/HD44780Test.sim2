@@ -1,7 +1,7 @@
 <circuit version="2.0.0-" rev="260308" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" anicurr="0" ansi="0" width="3200" height="2400" >
 
 <item itemtype="Subcircuit" CircId="Mega-1" mainComp="false" Show_id="true" Show_Val="false" Pos="-228,-116" rotation="0" hflip="1" vflip="1" label="Mega-1" idLabPos="62.5307,55.2685" labelrot="0" valLabPos="-16,20" valLabRot="0">
-<mainCompProps MainCompId="mega2560-63" Package="1- mega2560_DIP" Frequency="16 MHz" ForceFreq="true" savePGM="false" Program="build/arduino.avr.mega/basic.ino.hex" Auto_Load="false" saveEepr="false" MainMcu="true" SerialMon="-1" />
+<mainCompProps MainCompId="mega2560-63" Package="1- mega2560_DIP" Frequency="16 MHz" ForceFreq="true" savePGM="false" Program="" Auto_Load="false" saveEepr="false" MainMcu="true" SerialMon="-1" />
 </item>
 
 <item itemtype="Hd44780" CircId="Hd44780-2" mainComp="false" Show_id="true" Show_Val="false" Pos="-244,-168" rotation="0" hflip="1" vflip="1" label="Hd44780-2" idLabPos="70,-82" labelrot="0" valLabPos="-16,20" valLabRot="0" Rows="2" Cols="16" />

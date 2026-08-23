@@ -4,8 +4,7 @@
 #   ./build.sh        Build a .hex suitable for flashing to real hardware
 #   ./build.sh -s     Build a .hex suitable for SimulIDE simulation
 #
-# Mirrors BareMetalHAL/examples/timing-basic-avr/build.sh's shape -
-# bare avr-g++ build, no arduino-cli, no Arduino core.
+# Bare avr-g++ build - no arduino-cli, no Arduino core.
 
 set -euo pipefail
 
@@ -47,8 +46,17 @@ find_avr_tool() {
 AVRGXX="$(find_avr_tool avr-g++)"
 AVROBJCOPY="$(find_avr_tool avr-objcopy)"
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-BAREMETALHAL_SRC="$HOME/Arduino/libraries/BareMetalHAL/src"
 BUILD_DIR="$DIR/build"
+
+BAREMETALHAL_SRC="${BAREMETALHAL_SRC:-$HOME/Arduino/libraries/BareMetalHAL/src}"
+if [ ! -f "$BAREMETALHAL_SRC/BareMetalHAL.h" ]; then
+  echo "ERROR: BareMetalHAL.h not found under $BAREMETALHAL_SRC - set BAREMETALHAL_SRC to its src/ directory" >&2
+  exit 1
+fi
+if [ ! -d "$BAREMETALHAL_SRC/avr" ]; then
+  echo "ERROR: $BAREMETALHAL_SRC/avr not found - this build targets the avr HAL implementation" >&2
+  exit 1
+fi
 
 mkdir -p "$BUILD_DIR"
 

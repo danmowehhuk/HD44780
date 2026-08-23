@@ -22,6 +22,7 @@ class HD44780 {
 
     void begin(uint8_t cols, uint8_t rows);
     void clear();
+    // NO_ARDUINO+HAL_AVR: row is clamped to 0/1 (2-row displays only).
     void setCursor(uint8_t col, uint8_t row);
     void cursor();
     void noCursor();
