@@ -1,0 +1,29 @@
+#######################################
+
+# Syntax Coloring Map For HD44780
+
+#######################################
+
+# Class (KEYWORD1)
+
+#######################################
+
+
+
+HD44780           KEYWORD1
+
+
+#######################################
+
+# Methods and Functions (KEYWORD2)
+
+#######################################
+
+begin           KEYWORD2
+clear           KEYWORD2
+setCursor       KEYWORD2
+cursor          KEYWORD2
+noCursor        KEYWORD2
+blink           KEYWORD2
+noBlink         KEYWORD2
+print           KEYWORD2
