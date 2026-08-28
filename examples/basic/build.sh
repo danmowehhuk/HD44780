@@ -18,7 +18,7 @@ REPO_ROOT="$(cd "$DIR/../.." && pwd)"
 
 COMPILE_CMD="arduino-cli compile -e -b arduino:avr:mega \
   --libraries ~/Arduino/libraries --library \"$REPO_ROOT\" --clean \
-  --build-property build.extra_flags=\"-DDEBUG\""
+  --build-property build.extra_flags=\"-DDEBUG -I..\""
 
 cd "$DIR"
 if $SIM_MODE; then
